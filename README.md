@@ -96,16 +96,24 @@ for await (const chunk of stream) {
 
 Typed wrappers for PageIndex MCP — for building custom AI agent integrations. See [MCP Tools docs](https://docs.pageindex.ai/js-sdk/mcp-tools).
 
-| Method                           | Description                  |
-| -------------------------------- | ---------------------------- |
-| `recentDocuments(params?)`       | List recent uploads          |
-| `findRelevantDocuments(params?)` | Search documents             |
-| `getDocument(params)`            | Get document details by name |
-| `getDocumentStructure(params)`   | Extract document outline     |
-| `getPageContent(params)`         | Read page content            |
-| `getDocumentImage(params)`       | Retrieve embedded image      |
-| `removeDocument(params)`         | Delete documents (batch)     |
-| `listFolders(params?)`           | List folders                 |
+| Method                           | Description                                                       |
+| -------------------------------- | ----------------------------------------------------------------- |
+| `browseDocuments(params?)`       | Unified discovery (time/relevance sort, folder drill-down)        |
+| `getFolderStructure(params?)`    | Folder hierarchy as a tree                                        |
+| `searchDocuments(params)`        | Keyword search with LLM re-rank (escalation path)                 |
+| `getDocument(params)`            | Get document details by name                                      |
+| `getDocumentStructure(params)`   | Extract document outline                                          |
+| `getPageContent(params)`         | Read page content                                                 |
+| `getDocumentImage(params)`       | Retrieve embedded image                                           |
+| `removeDocument(params)`         | Delete documents (batch)                                          |
+
+**Deprecated** (still callable for backward compatibility, hidden from the live MCP `tools/list`):
+
+| Method                           | Replacement                                          |
+| -------------------------------- | ---------------------------------------------------- |
+| `recentDocuments(params?)`       | `browseDocuments()` (default `sort: "time"`)         |
+| `findRelevantDocuments(params?)` | `browseDocuments({ sort: "relevance", query })` or `searchDocuments()` |
+| `listFolders(params?)`           | `getFolderStructure()`                               |
 
 ## Error Handling
 

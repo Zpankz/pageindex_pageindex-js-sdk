@@ -19,6 +19,11 @@ export interface ListFoldersResult {
   next_steps: NextSteps;
 }
 
+/**
+ * @deprecated Use {@link getFolderStructure} instead. The server still accepts
+ * `list_folders` calls for backward compatibility, but the tool is hidden from
+ * MCP `tools/list` and may be removed in a future release.
+ */
 export async function listFolders(
   transport: McpTransport,
   params?: ListFoldersParams,

@@ -27,6 +27,11 @@ export interface RecentDocumentsResult {
   next_steps: NextSteps;
 }
 
+/**
+ * @deprecated Use {@link browseDocuments} instead. The server still accepts
+ * `recent_documents` calls for backward compatibility, but the tool is hidden
+ * from MCP `tools/list` and may be removed in a future release.
+ */
 export async function recentDocuments(
   transport: McpTransport,
   params?: RecentDocumentsParams,

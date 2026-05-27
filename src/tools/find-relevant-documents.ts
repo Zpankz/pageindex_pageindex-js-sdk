@@ -29,6 +29,12 @@ export interface FindRelevantDocumentsResult {
   next_steps: NextSteps;
 }
 
+/**
+ * @deprecated Use {@link browseDocuments} with `sort: "relevance"` (primary)
+ * or {@link searchDocuments} (keyword escalation). The server still accepts
+ * `find_relevant_documents` calls for backward compatibility, but the tool is
+ * hidden from MCP `tools/list` and may be removed in a future release.
+ */
 export async function findRelevantDocuments(
   transport: McpTransport,
   params?: FindRelevantDocumentsParams,
