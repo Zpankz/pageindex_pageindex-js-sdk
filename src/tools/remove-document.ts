@@ -6,16 +6,14 @@ export interface RemoveDocumentParams {
   folderId?: string | null;
 }
 
+export interface RemoveDocumentResultItem {
+  doc_name: string;
+  status: "deleted" | "not_found" | "failed";
+  error?: string;
+}
+
 export interface RemoveDocumentResult {
-  results: {
-    successful: number;
-    failed: number;
-    details: Array<{
-      doc_name: string;
-      success: boolean;
-      error?: string;
-    }>;
-  };
+  results: RemoveDocumentResultItem[];
   next_steps: NextSteps;
 }
 
